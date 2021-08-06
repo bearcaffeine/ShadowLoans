@@ -2,7 +2,7 @@
 <html lang="en" class="h-100">
 
 <head>
-    <title>App Name: A Coding Project by Brad Costello</title>
+    <title>Shadow Loans: A Coding Project by Brad Costello</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -22,7 +22,7 @@
     <nav class="navbar navbar-expand-md navbar-dark fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="#"><img src="img/BC_white_mark.svg" class="d-line-block align-text-top"
-                    alt="Brad Costello Logo" width="30" and height="29"> APP NAME</a>
+                    alt="Brad Costello Logo" width="30" and height="29"> Shadow Loans</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -39,7 +39,7 @@
                         <a class="nav-link" href="/code.html">The Code</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" target="_blank" href="https://github.com/bearcaffeine/JSSiteTemplate">Git
+                        <a class="nav-link" target="_blank" href="https://github.com/bearcaffeine/ShadowLoans">Git
                             Repo</a>
                     </li>
                     <li class="nav-item">
@@ -51,15 +51,86 @@
         </div>
     </nav>
 
+    <!-- Main Section -->
     <main class="flex-shrink-0">
-        <div class="container mt-5">
+        <div class="container">
+            <!--Title Row -->
             <div class="row">
                 <div class="col">
-                    <h1 class="display-5 fw-bold lh-1 mb-3">APP NAME: A CODING PROJECT</h1>
-                    <h4 class="lead pb-3">Lorem ipsum dolor sit amet, nec nonumy tamquam eu, suas eirmod ex sit. Quaeque bonorum minimum ne nec, sit quem oporteat ut, sit eu noster percipit. Ad eam wisi erant, ius at doming ceteros incorrupte, habeo affert moderatius no eam. Eos ne nihil bonorum appetere, pri ad doming concludaturque, eripuit.</h4>
+                    <h1 class="mb-3">Loan Calculator</h1>
+                </div>
+            </div>
+            <!-- Input and Monthly Payments Information Row -->
+            <div class="row">
+                <div class="col">
+                    <form>
+                        <div class="row loanArea">
+                            <div class="col-12 p-3">
+                                <label for="inputLoanAmount" class="form-label">Loan Amount</label>
+                                <input id="loanAmount" type="number" class="form-control"
+                                    placeholder="Enter A Loan Amount" aria-label="Enter a loan amount">
+                                <label for="paymentMonths" class="form-label">Payment</label>
+                                <input id="paymentMonths" type="number" class="form-control"
+                                    placeholder="Enter The Number Of Months" aria-label="Enter the number of months">
+                                <label for="rateAmount" class="form-label">Rate</label>
+                                <input id="rateAmount" type="number" class="form-control" placeholder="Enter A Rate"
+                                    aria-label="Enter A Rate">
+                            </div>
+                            <div class="col-12 d-flex justify-content-end p-1 mb-2">
+                                <button type="button" id="btnSubmit" class="btn btn-outline-info">Calculate</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
                 <div class="col">
-                    <h5 class="border-1 border-bottom">Application</h5>
+                    <div class="row">
+                        <div class="col-12 d-flex justify-content-center fs-4 fst-italic">
+                            <p>Your Monthly Payments</p>
+                        </div>
+                        <div id="monthlyPayments" class="col-12 display-4 fw-bold d-flex justify-content-center">
+                            <!--Insert monthly payment here -->
+                            $####.##
+                        </div>
+                        <div class="col m-4">
+                            <div>Total Principal</div>
+                            <div>Total Interest</div>
+                            <div>Total Cost</div>
+                        </div>
+                        <div class="col m-4">
+                            <div id="totalPrinicpal">
+                                $####.##
+                            </div>
+                            <div id="interest">
+                                $####.##
+                            </div>
+                            <div id="totalCost">
+                                $####.##
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Table that shows monthly breakdown of payments -->
+            <div class="row mt-3">
+                <div class="col p-0 invisible fade show" id="tableResults">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-sm">
+                            <thead class="tableHead text-light">
+                                <tr>
+                                    <th scope="col">Month</th>
+                                    <th scope="col">Payment</th>
+                                    <th scope="col">Principal</th>
+                                    <th scope="col">Interest</th>
+                                    <th scope="col">Total Interest</th>
+                                    <th scope="col">Balance</th>
+                                </tr>
+                            </thead>
+                            <tbody id="results">
+
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
@@ -89,12 +160,25 @@
         </div>
     </footer>
 
+    <template id="runningBalance">
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </template>
+
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
         integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous">
     </script>
     <script src="/js/site.js"></script>
-
+    <script>
+        document.getElementById("btnSubmit").addEventListener("click", getValues);
+    </script>
 </body>
 
 </html>

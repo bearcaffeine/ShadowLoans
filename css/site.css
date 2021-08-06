@@ -3,6 +3,8 @@
     --secondary-color: #ff993b;
     --dark-color: #292929;
     --white-color: #e7e7e7;
+    --alt-color: #E7E6E8;
+    --table-header: #063766;
 }
 
 body{
@@ -11,6 +13,14 @@ body{
 
 nav{
     background-color: var(--dark-color);
+}
+
+.loanArea{
+    background-color: var(--alt-color);
+}
+
+.tableHead{
+    background-color: var(--table-header);
 }
 
 footer{
